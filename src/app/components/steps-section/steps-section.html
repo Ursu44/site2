@@ -1,0 +1,48 @@
+<div
+  class="max-w-4xl mx-auto steps-wrapper"
+  [style.opacity]="opacity()"
+  [style.transform]="'translateX(' + (-60 * (1 - opacity())) + 'px)'"
+  style="transition: opacity 0.8s ease-out, transform 0.8s ease-out;"
+>
+  <div class="bg-white/80 backdrop-blur-md rounded-2xl shadow-xl steps-card">
+
+    <div class="text-center steps-header">
+      <h2 class="font-bold text-slate-900 steps-title">
+        Pasii concreti pentru obtinerea unui imprumut
+      </h2>
+      <div class="bg-amber-500 mx-auto rounded-full steps-title-line"></div>
+    </div>
+
+    <div class="relative">
+
+      <div class="absolute top-0 bottom-0 bg-slate-200 steps-line steps-line-bg"></div>
+
+      <div
+        class="absolute top-0 bg-amber-500 origin-top steps-line"
+        [style.height]="(opacity() * 100) + '%'"
+        style="transition: height 2s ease-out;"
+      ></div>
+
+      <div class="flex flex-col steps-list">
+        @for (step of steps; track step.number; let i = $index) {
+          <div
+            class="relative flex items-start steps-item"
+            [style.opacity]="opacity()"
+            [style.transition]="'opacity 1s ease-out ' + (i * 0.3) + 's'"
+          >
+            <div class="relative z-10 flex-shrink-0 bg-amber-500 rounded-full flex items-center justify-center shadow-lg step-number-circle">
+              <span class="text-slate-900 font-bold step-number-text">{{ step.number }}</span>
+            </div>
+
+            <div class="step-text-content">
+              <h3 class="font-semibold text-slate-900 step-title">{{ step.title }}</h3>
+              <p class="text-slate-600 leading-relaxed step-description">{{ step.description }}</p>
+            </div>
+          </div>
+        }
+      </div>
+
+    </div>
+
+  </div>
+</div>
